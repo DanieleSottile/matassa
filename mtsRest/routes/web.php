@@ -14,3 +14,9 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+Route::get('/api/v1/ingredients/{id?}', 'Ingredients@index');
+Route::post('/api/v1/ingredients', 'Ingredients@store');
+Route::post('/api/v1/ingredients/{id}', 'Ingredients@update');
+Route::delete('/api/v1/ingredients/{id}', 'Ingredients@destroy');

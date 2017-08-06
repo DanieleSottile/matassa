@@ -9,14 +9,14 @@ import { Ingredient } from './ingredient';
 export class IngredientsService {
 
   private headers = new Headers({'Content-Type': 'application/json'});
-  private ingredientsUrl = 'api/ingredients';  // URL to web api
+  private ingredientsUrl = 'http://localhost/mts/mtsRest/public/api/v1/ingredients';  // URL to web api
 
   constructor(private http: Http) { }
 
   getIngredients(): Promise<Ingredient[]> {
     return this.http.get(this.ingredientsUrl)
                .toPromise()
-               .then(response => response.json().data as Ingredient[])
+               .then(response => response.json() as Ingredient[])
                .catch(this.handleError);
   }
 
@@ -25,7 +25,7 @@ export class IngredientsService {
     const url = `${this.ingredientsUrl}/${id}`;
     return this.http.get(url)
       .toPromise()
-      .then(response => response.json().data as Ingredient)
+      .then(response => response.json() as Ingredient)
       .catch(this.handleError);
   }
 
@@ -41,7 +41,7 @@ export class IngredientsService {
     return this.http
       .post(this.ingredientsUrl, JSON.stringify({name: name}), {headers: this.headers})
       .toPromise()
-      .then(res => res.json().data as Ingredient)
+      .then(res => res.json() as Ingredient)
       .catch(this.handleError);
   }
 
