@@ -1,0 +1,9 @@
+<ul class="items">
+ <li *ngFor="let consumable of consumables" (click)="onSelect(consumable)"
+     [class.selected]="consumable === selectedConsumable">
+   <span class="badge">{{consumable.id}}</span>
+   <span>{{consumable.name}}</span>
+   <button class="delete"
+     (click)="delete(consumable); $event.stopPropagation()">x</button>
+ </li>
+</ul>

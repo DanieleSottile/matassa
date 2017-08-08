@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Ingredient;
+use App\Consumable;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class Ingredients extends Controller
+class Consumables extends Controller
 {
 /**
      * Display a listing of the resource.
@@ -15,7 +15,7 @@ class Ingredients extends Controller
      */
     public function index($id = null) {
         if ($id == null) {
-            return Ingredient::orderBy('id', 'asc')->get();
+            return Consumable::orderBy('id', 'asc')->get();
         } else {
             return $this->show($id);
         }
@@ -28,12 +28,12 @@ class Ingredients extends Controller
      * @return Response
      */
     public function store(Request $request) {
-        $ingredient = new Ingredient;
+        $item = new Consumable;
 
-        $ingredient->name = $request->input('name');
-        $ingredient->save();
+        $item->name = $request->input('name');
+        $item->save();
 
-        return  $ingredient;
+        return  $item;
     }
 
     /**
@@ -43,7 +43,7 @@ class Ingredients extends Controller
      * @return Response
      */
     public function show($id) {
-        return Ingredient::find($id);
+        return Consumable::find($id);
     }
 
     /**
@@ -54,12 +54,12 @@ class Ingredients extends Controller
      * @return Response
      */
     public function update(Request $request, $id) {
-        $ingredient = Ingredient::find($id);
+        $item = Consumable::find($id);
 
-        $ingredient->name = $request->input('name');
-        $ingredient->save();
+        $item->name = $request->input('name');
+        $item->save();
 
-        return "Sucess updating ingredient #" . $ingredient->id;
+        return "Sucess updating ingredient #" . $item->id;
     }
 
     /**
@@ -69,10 +69,10 @@ class Ingredients extends Controller
      * @return Response
      */
     public function destroy($id) {
-        $ingredient = Ingredient::find($id);
+        $item = Consumable::find($id);
 
-        if (isset($ingredient)) {
-            $ingredient->delete();
+        if (isset($item)) {
+            $item->delete();
             return "Ingredient record successfully deleted #" . $id;
         }
     }

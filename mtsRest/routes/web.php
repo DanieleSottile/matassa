@@ -16,7 +16,7 @@ Route::get('/', function () {
 });
 
 
-Route::get('/api/v1/ingredients/{id?}', 'Ingredients@index');
-Route::post('/api/v1/ingredients', 'Ingredients@store');
-Route::post('/api/v1/ingredients/{id}', 'Ingredients@update');
-Route::delete('/api/v1/ingredients/{id}', 'Ingredients@destroy');
+Route::get('/api/v1/consumables/{id?}', 'Consumables@index');
+Route::post('/api/v1/consumables', 'Consumables@store');
+Route::post('/api/v1/consumables/{id}', 'Consumables@update');
+Route::delete('/api/v1/consumables/{id}', 'Consumables@destroy');

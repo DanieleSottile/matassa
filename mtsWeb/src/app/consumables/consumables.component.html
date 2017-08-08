@@ -1,0 +1,16 @@
+<h2>My Heroes</h2>
+<div>
+  <label>Hero name:</label> <input #heroName />
+  <button (click)="add(heroName.value); heroName.value=''">
+    Add
+  </button>
+</div>
+
+<mts-consumables-list></mts-consumables-list>
+
+<div *ngIf="selectedConsumable">
+  <h2>
+    {{selectedConsumable.name | uppercase}} is my hero
+  </h2>
+  <button (click)="gotoDetail()">View Details</button>
+</div>
